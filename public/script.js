@@ -28,7 +28,7 @@ $(document).ready(function(){
                 $("#price").addClass("down");
                 $("#price").html("$" + newData.bpi[date])
                 $("#dolgainloss").addClass("down");
-                $("#dolgainloss").html("-$"+((newData.bpi[date]-newData.bpi[oldDate])).toFixed(2));
+                $("#dolgainloss").html("$"+((newData.bpi[date]-newData.bpi[oldDate])).toFixed(2));
                 $("#pergainloss").addClass("down");
                 $("#pergainloss").html(((newData.bpi[date]-newData.bpi[oldDate])/(newData.bpi[date])*100)
                 .toFixed(2)+"%");
