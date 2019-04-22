@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BitCoin Price API</title>
+
+    <link rel="shortcut icon" href="./images/bc.ico">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+            
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <img class="logo" src="./images/bclogo.png">
+                    <h1>BitCoin Price API</h1>
+                    <p class="info">A Bootstrap styled Node.js app that retrieves pricing data from the CoinDesk API using an AJAX request.</p>
+                <br>
+                <div class="btn-center">
+                    <button class="btn btn-success btn-lg">Get Latest Price</button>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+            </div>
+            <h2>Most Recent Closing Price: <span id="price"></span></h2>
+            
+            <h2>Dollar Gain/Loss from Previous Closing Price: <span id="dolgainloss"></span></h2>
+            
+            <h2>Percent Gain/Loss from Previous Price: <span id="pergainloss"></span></h2>
+            
+    </div>
+</body>
+</html>
