@@ -17,34 +17,51 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <script src="script.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+        <div class="jumbotron">
+                <img class="logo" src="./images/bclogo.png">
+                <h1>Bitcoin Price API</h1>
+                <p class="info">A Bootstrap styled Node.js app that retrieves pricing data from the CoinDesk.com API using Axios (back-end) and AJAX (front-end).</p>
+                <br>
+            <div class="btn-center">
+                <button style="font-size: 20px;" class="btn btn-success btn-lg">Get Latest Price</button>
+            </div>
+        </div>
     <div class="container">
-            
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-12">
-                <div class="jumbotron">
-                    <img class="logo" src="./images/bclogo.png">
-                    <h1>BitCoin Price API</h1>
-                    <p class="info">A Bootstrap styled Node.js app that retrieves pricing data from the CoinDesk API using an AJAX request.</p>
-                <br>
-                <div class="btn-center">
-                    <button class="btn btn-success btn-lg">Get Latest Price</button>
+                <div class="media">
+                    <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
+                    <div class="media-body">
+                        <h5 id="today" class="mt-0">></h5>
+                        <h2>Most Recent Closing Price: <span id="price"></span></h2>
+                    </div>
+                </div>
+                <div class="media">
+                    <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
+                    <div class="media-body">
+                        <h5 id="yesterday" class="mt-0">Top-aligned media</h5>
+                        <h2>Dollar Gain/Loss from Previous Closing Price: <span id="dolgainloss"></span></h2>
+                    </div>
+                </div>
+                <div class="media">
+                    <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
+                    <div class="media-body">
+                        <h5  id="yesterday2" class="mt-0">Top-aligned media</h5>
+                        <h2>Percent Gain/Loss from Previous Closing Price: <span id="pergainloss"></span></h2>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3"></div>
         </div>
-            </div>
-            <h2>Most Recent Closing Price: <span id="price"></span></h2>
-            
-            <h2>Dollar Gain/Loss from Previous Closing Price: <span id="dolgainloss"></span></h2>
-            
-            <h2>Percent Gain/Loss from Previous Price: <span id="pergainloss"></span></h2>
-            
     </div>
 </body>
 </html>
