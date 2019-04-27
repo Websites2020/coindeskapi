@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BitCoin Price API</title>
+    <title>Bitcoin Price API</title>
 
     <link rel="shortcut icon" href="./images/bc.ico">
+
+    <!-- Google Chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -18,50 +21,62 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script src="script.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-        <div class="jumbotron">
-                <img class="logo" src="./images/bclogo.png">
-                <h1>Bitcoin Price API</h1>
-                <p class="info">A Bootstrap styled Node.js app that retrieves pricing data from the CoinDesk.com API using Axios (back-end) and AJAX (front-end).</p>
-                <br>
-            <div class="btn-center">
-                <button style="font-size: 20px;" class="btn btn-success btn-lg">Get Latest Price</button>
-            </div>
-        </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-12">
-                <div class="media">
-                    <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
-                    <div class="media-body">
-                        <h5 id="today" class="mt-0">></h5>
-                        <h2>Most Recent Closing Price: <span id="price"></span></h2>
-                    </div>
-                </div>
-                <div class="media">
-                    <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
-                    <div class="media-body">
-                        <h5 id="yesterday" class="mt-0">Top-aligned media</h5>
-                        <h2>Dollar Gain/Loss from Previous Closing Price: <span id="dolgainloss"></span></h2>
-                    </div>
-                </div>
-                <div class="media">
-                    <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
-                    <div class="media-body">
-                        <h5  id="yesterday2" class="mt-0">Top-aligned media</h5>
-                        <h2>Percent Gain/Loss from Previous Closing Price: <span id="pergainloss"></span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
+    <div class="jumbotron">
+        <h2>Bitcoin Price API</h2>
+        <p class="info">A Bootstrap styled Node.js app that retrieves pricing data from the CoinDesk.com API using Axios, that is being initiated by an AJAX call from the front-end, then returns the data to the user by displaying it in a Google chart.</p>
     </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">  
+                <div id="chart_div"></div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="media">
+                        <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
+                    <div class="media-body">
+                        <h3>Closing Price: <span id="price"></span></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="media">
+                        <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
+                    <div class="media-body">
+                        <h3>Dollar Gain/Loss: <span id="dolgainloss"></span></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="media">
+                        <img src="./images/bclogo.png" height="30px" class="mr-3" alt="bitcoin logo">
+                    <div class="media-body">
+                        <h3>Percent Gain/Loss: <span id="pergainloss"></span></h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
