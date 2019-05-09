@@ -1,48 +1,64 @@
 $(document).ready(function(){
 
     /* CREATE DATES -- FUTURE: NEED TO CONDENSE INTO FOR LOOP */
-
+        var day = [];
+        var date=[]
         var d = new Date();
         var month = d.getMonth()+1;
         var year = d.getFullYear();
 
-        var day = d.getDate()-1;
-        var day2 = d.getDate()-2;
-        var day3 = d.getDate()-3;
-        var day4 = d.getDate()-4;
-        var day5 = d.getDate()-5;
-        var day6 = d.getDate()-6;
-        var day7 = d.getDate()-7;
-        var day8 = d.getDate()-8;
-        var day9 = d.getDate()-9;
+        for (var x = 1; x < 10; x++) {
+            console.log(day[x]);
+            day[x] = d.getDate()-x;
+        }
+        // var day = d.getDate()-1;
+        // var day2 = d.getDate()-2;
+        // var day3 = d.getDate()-3;
+        // var day4 = d.getDate()-4;
+        // var day5 = d.getDate()-5;
+        // var day6 = d.getDate()-6;
+        // var day7 = d.getDate()-7;
+        // var day8 = d.getDate()-8;
+        // var day9 = d.getDate()-9;
         
         var oldday = d.getDate()-2;
+        console.log(day[1])
 
     /* IF/ELSE TO DETERMINE WHEN A 0 NEEDS TO BE ADDED TO THE BEGINING OF A MONTH */
+for (var i = 1; i< 10; i++) {
+    if (month < 10 && day[i] < 10) {
+        console.log("add zero to month")
+        // console.log(date);
+        if (day[i] < 10) {
+            date[i] = year+"-"+"0"+month+"-"+"0"+day[i];
+        } else {
+            date[i] = year+"-"+"0"+month+"-"+day[i];
+        }
+    } else {
+        console.log("no zero for month")
+        if (day[i] < 10) {
+            date[i] = year+"-"+month+"-"+"0"+day[i];
+        } else {
+            date[i] = year+"-"+month+"-"+day[i];
+        }
+    }
+}
 
     if (month < 10) {
-        var date = year+"-"+"0"+month+"-"+day;
-        var date2 = year+"-"+"0"+month+"-"+day2;
-        var date3 = year+"-"+"0"+month+"-"+day3;
-        var date4 = year+"-"+"0"+month+"-"+day4;
-        var date5 = year+"-"+"0"+month+"-"+day5;
-        var date6 = year+"-"+"0"+month+"-"+day6;
-        var date7 = year+"-"+"0"+month+"-"+day7;
-        var date8 = year+"-"+"0"+month+"-"+day8;
-        var date9 = year+"-"+"0"+month+"-"+day9;
+        if (oldday < 10) {
+            var oldDate = year+"-"+"0"+month+"-"+"0"+oldday;
+        } else {
+            var oldDate = year+"-"+"0"+month+"-"+oldday;
+        }
     } else {
-        var date = year+"-"+month+"-"+day;
-        var date2 = year+"-"+month+"-"+day2;
-        var date3 = year+"-"+month+"-"+day3;
-        var date4 = year+"-"+month+"-"+day4;
-        var date5 = year+"-"+month+"-"+day5;
-        var date6 = year+"-"+month+"-"+day6;
-        var date7 = year+"-"+month+"-"+day7;
-        var date8 = year+"-"+month+"-"+day8;
-        var date9 = year+"-"+month+"-"+day9;
+        if (oldday < 10) {
+            var oldDate = year+"-"+month+"-"+"0"+oldday;
+        } else {
+            var oldDate = year+"-"+month+"-"+oldday;
+        }
     }
-
-    var oldDate = year+"-"+"0"+month+"-"+oldday;
+    
+    
 
     /* FUTURE CONTENT */
     /*--------------------------------------------------------*/
@@ -58,23 +74,27 @@ $(document).ready(function(){
     $.ajax({url: "/coindesk", success: function(result){
         
         var newData = result;
+        console.log(date[1])
+        console.log(newData.bpi[date[1]])
+        console.log(oldDate)
+        console.log(newData.bpi[oldDate])
 
         /* IF/ELSE STATEMENT TO DETERMINE WHEN PRICE HAS GONE UP OR DOWN FROM PREVIOUS DAY */
 
         if (newData.bpi[date] > newData.bpi[oldDate]) {
             $("#price").addClass("up");
-            $("#price").html("$" + (newData.bpi[date]).toFixed(2))
+            $("#price").html("$" + (newData.bpi[date[1]]).toFixed(2))
             $("#dolgainloss").addClass("up");
-            $("#dolgainloss").html("+$"+((newData.bpi[date]-newData.bpi[oldDate])).toFixed(2));
+            $("#dolgainloss").html("+$"+((newData.bpi[date[1]]-newData.bpi[oldDate])).toFixed(2));
             $("#pergainloss").addClass("up");
-            $("#pergainloss").html("+"+((newData.bpi[date]-newData.bpi[oldDate])/(newData.bpi[date])*100).toFixed(2)+"%");
+            $("#pergainloss").html("+"+((newData.bpi[date[1]]-newData.bpi[oldDate])/(newData.bpi[date[1]])*100).toFixed(2)+"%");
         } else {
             $("#price").addClass("down");
-            $("#price").html("$" + (newData.bpi[date]).toFixed(2))
+            $("#price").html("$" + (newData.bpi[date[1]]).toFixed(2))
             $("#dolgainloss").addClass("down");
-            $("#dolgainloss").html("$"+((newData.bpi[date]-newData.bpi[oldDate])).toFixed(2));
+            $("#dolgainloss").html("$"+((newData.bpi[date[1]]-newData.bpi[oldDate])).toFixed(2));
             $("#pergainloss").addClass("down");
-            $("#pergainloss").html(((newData.bpi[date]-newData.bpi[oldDate])/(newData.bpi[date])*100)
+            $("#pergainloss").html(((newData.bpi[date[1]]-newData.bpi[oldDate])/(newData.bpi[date[1]])*100)
             .toFixed(2)+"%");
         }           
         
@@ -91,8 +111,8 @@ $(document).ready(function(){
         /* DATA */
 
       data.addRows([
-        [date9, newData.bpi[date9]],   [date8, newData.bpi[date8]],  [date7, newData.bpi[date7]],  [date6, newData.bpi[date6]],  [date5, newData.bpi[date5]],  [date4, newData.bpi[date4]],
-        [date3, newData.bpi[date3]],  [date2, newData.bpi[date2]],  [date, newData.bpi[date]]
+        [date[9], newData.bpi[date[9]]],   [date[8], newData.bpi[date[8]]],  [date[7], newData.bpi[date[7]]],  [date[6], newData.bpi[date[6]]],  [date[5], newData.bpi[date[5]]],  [date[4], newData.bpi[date[4]]],
+        [date[3], newData.bpi[date[3]]],  [date[2], newData.bpi[date[2]]],  [date[1], newData.bpi[date[1]]]
       ]);
 
       /* CHART OPTIONS */
@@ -106,7 +126,8 @@ $(document).ready(function(){
         },
         'width':"100%",
         'height':300,
-        backgroundColor: '#f1f8e9'
+        backgroundColor: '#f1f8e9',
+        'title':'Bitcoin 10 day price',
       };
 
       /* DRAW CHART */
