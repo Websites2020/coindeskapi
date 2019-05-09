@@ -81,7 +81,7 @@ for (var i = 1; i< 10; i++) {
 
         /* IF/ELSE STATEMENT TO DETERMINE WHEN PRICE HAS GONE UP OR DOWN FROM PREVIOUS DAY */
 
-        if (newData.bpi[date] > newData.bpi[oldDate]) {
+        if (newData.bpi[date[1]] > newData.bpi[oldDate]) {
             $("#price").addClass("up");
             $("#price").html("$" + (newData.bpi[date[1]]).toFixed(2))
             $("#dolgainloss").addClass("up");
