@@ -11,38 +11,22 @@ $(document).ready(function(){
             console.log(day[x]);
             day[x] = d.getDate()-x;
         }
-        // var day = d.getDate()-1;
-        // var day2 = d.getDate()-2;
-        // var day3 = d.getDate()-3;
-        // var day4 = d.getDate()-4;
-        // var day5 = d.getDate()-5;
-        // var day6 = d.getDate()-6;
-        // var day7 = d.getDate()-7;
-        // var day8 = d.getDate()-8;
-        // var day9 = d.getDate()-9;
         
         var oldday = d.getDate()-2;
         console.log(day[1])
 
     /* IF/ELSE TO DETERMINE WHEN A 0 NEEDS TO BE ADDED TO THE BEGINING OF A MONTH */
 for (var i = 1; i< 10; i++) {
-    if (month < 10 && day[i] < 10) {
-        console.log("add zero to month")
-        // console.log(date);
-        if (day[i] < 10) {
+        if (month < 10 && day[i] < 10) {
             date[i] = year+"-"+"0"+month+"-"+"0"+day[i];
-        } else {
+        } else if (month < 10 && day[i] > 9) {
             date[i] = year+"-"+"0"+month+"-"+day[i];
-        }
-    } else {
-        console.log("no zero for month")
-        if (day[i] < 10) {
+        } else if (month > 9 && day[i] < 10) {
             date[i] = year+"-"+month+"-"+"0"+day[i];
-        } else {
+        } else if (month > 9 && day[i] > 9) {
             date[i] = year+"-"+month+"-"+day[i];
         }
     }
-}
 
     if (month < 10) {
         if (oldday < 10) {
@@ -57,17 +41,6 @@ for (var i = 1; i< 10; i++) {
             var oldDate = year+"-"+month+"-"+oldday;
         }
     }
-    
-    
-
-    /* FUTURE CONTENT */
-    /*--------------------------------------------------------*/
-
-    // $("#today").html(month + "/" + day + "/" + year);
-    // $("#yesterday").html(month + "/" + oldday + "/" + year);
-    // $("#yesterday2").html(month + "/" + oldday + "/" + year)
-
-    /*--------------------------------------------------------*/
         
     /* AJAX CALL */
 
@@ -127,7 +100,7 @@ for (var i = 1; i< 10; i++) {
         'width':"100%",
         'height':300,
         backgroundColor: '#f1f8e9',
-        'title':'Bitcoin 10 day price',
+        'title':'Bitcoin 9 day price',
       };
 
       /* DRAW CHART */
